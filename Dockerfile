@@ -1,6 +1,6 @@
 # Docker file to run AWS CLI, S3CMD and RDS tools.
-FROM cgswong/java:openjdk8
-MAINTAINER Stuart Wong <cgs.wong@gmail.com>
+FROM soumentrivedi/java:openjdk8
+MAINTAINER Soumen Trivedi <soumen.trivedi@gmail.com>
 
 ENV S3_TMP /tmp/s3cmd.zip
 ENV S3_ZIP /tmp/s3cmd-master
