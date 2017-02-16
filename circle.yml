@@ -3,13 +3,9 @@ machine:
     - docker
 
 dependencies:
-  cache_directories:
-    - "~/docker"
   override:
     - docker info
-    - if [ -e ~/docker/image.tar ]; then docker load --input ~/docker/image.tar; fi
     - docker build -t soumentrivedi/aws:latest .
-    - mkdir -p ~/docker; docker save soumentrivedi/aws:latest > ~/docker/image.tar
 
 test:
   override:
@@ -17,6 +13,6 @@ test:
 
 deployment:
   hub:
-    branch: master
     commands:
-      - $DEPLOY
+      - docker tag soumentrivedi/aws:latest soumentrivedi/aws:$CIRCLE_BUILD_NUM
+      - docker push soumentrivedi/aws
